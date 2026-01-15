@@ -149,78 +149,78 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <header id="home" className="pt-24 pb-16 lg:pt-28 lg:pb-20">
-        <div className="container mx-auto px-5">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Hero Content */}
-            <div>
-              <span className="inline-flex items-center gap-2 bg-white/90 border border-accent-tangerine/15 px-4 py-2 rounded-full text-sm font-bold text-accent-tangerine shadow-lg shadow-accent-tangerine/10 mb-6">
-                <IceCreamCone size={16} />
-                {HERO_DATA.badge}
-              </span>
+      <header
+        id="home"
+        className="relative min-h-screen flex items-center"
+        style={{
+          backgroundImage: `url(${IMAGES.hero})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        
+        <div className="container mx-auto px-5 relative z-10 pt-20 pb-16">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm border border-accent-tangerine/20 px-4 py-2 rounded-full text-sm font-bold text-accent-tangerine shadow-lg mb-6">
+              <IceCreamCone size={16} />
+              {HERO_DATA.badge}
+            </span>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-black text-text-base leading-tight mb-4">
-                {HERO_DATA.title}{' '}
-                <span className="relative inline-block">
-                  <span className="text-accent-tangerine">{HERO_DATA.highlight}</span>
-                  <span className="absolute left-0 right-0 bottom-1 h-3 bg-accent-yellow/40 -z-10 rounded" />
-                </span>{' '}
-                {HERO_DATA.titleEnd}
-              </h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+              {HERO_DATA.title}{' '}
+              <span className="relative inline-block">
+                <span className="text-accent-tangerine">{HERO_DATA.highlight}</span>
+                <span className="absolute left-0 right-0 bottom-2 h-3 bg-accent-yellow/50 -z-10 rounded" />
+              </span>{' '}
+              {HERO_DATA.titleEnd}
+            </h1>
 
-              <p className="text-text-subtle text-lg leading-relaxed mb-6 max-w-lg">
-                {HERO_DATA.description}
-              </p>
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+              {HERO_DATA.description}
+            </p>
 
-              <div className="flex flex-wrap gap-3 mb-6">
-                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full px-6 py-3 text-base shadow-lg shadow-accent-tangerine/30 transition-transform hover:scale-105 hover:shadow-xl">
-                    {HERO_DATA.ctaPrimary}
-                  </Button>
-                </a>
-                <Button
-                  variant="outline"
-                  onClick={() => scrollToSection('packages')}
-                  className="rounded-full px-6 py-3 font-bold border-2 border-text-base/10 hover:border-accent-tangerine/50 hover:bg-coconut transition-colors"
-                >
-                  {HERO_DATA.ctaSecondary}
+            <div className="flex flex-wrap gap-4 mb-8">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full px-8 py-4 text-lg shadow-xl shadow-accent-tangerine/40 transition-transform hover:scale-105">
+                  {HERO_DATA.ctaPrimary}
                 </Button>
-              </div>
-
-              <div className="text-sm font-semibold text-text-subtle/80">
-                {HERO_DATA.trustBadges.map((badge, i) => (
-                  <span key={i}>
-                    {badge}
-                    {i < HERO_DATA.trustBadges.length - 1 && (
-                      <span className="mx-2 text-text-base/30">•</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-
-              <p className="mt-4 text-text-base/70 font-semibold text-sm">
-                {HERO_DATA.tagline}
-              </p>
+              </a>
+              <Button
+                variant="outline"
+                onClick={() => scrollToSection('packages')}
+                className="rounded-full px-8 py-4 text-lg font-bold border-2 border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 transition-colors"
+              >
+                {HERO_DATA.ctaSecondary}
+              </Button>
             </div>
 
-            {/* Hero Card */}
-            <div className="rounded-2xl overflow-hidden bg-white shadow-2xl shadow-text-base/10 border border-text-base/5">
-              <div
-                className="h-80 lg:h-96 bg-cover bg-center relative"
-                style={{ backgroundImage: `url(${IMAGES.hero})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-              <div className="flex justify-between gap-4 p-5 border-t border-text-base/5">
-                {HERO_DATA.stats.map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <div className="font-display font-black text-2xl text-accent-tangerine">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm font-semibold text-text-subtle">{stat.label}</div>
+            <div className="text-sm font-semibold text-white/80">
+              {HERO_DATA.trustBadges.map((badge, i) => (
+                <span key={i}>
+                  {badge}
+                  {i < HERO_DATA.trustBadges.length - 1 && (
+                    <span className="mx-2 text-white/40">•</span>
+                  )}
+                </span>
+              ))}
+            </div>
+
+            <p className="mt-4 text-white/70 font-semibold text-sm">
+              {HERO_DATA.tagline}
+            </p>
+
+            {/* Stats Bar */}
+            <div className="mt-10 flex gap-8 md:gap-12">
+              {HERO_DATA.stats.map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="font-display font-black text-3xl md:text-4xl text-accent-tangerine">
+                    {stat.value}
                   </div>
-                ))}
-              </div>
+                  <div className="text-sm font-semibold text-white/70">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
