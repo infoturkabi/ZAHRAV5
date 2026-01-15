@@ -7,12 +7,26 @@ module.exports = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			display: ['"Playfair Display"', 'serif'],
+  			sans: ['"DM Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+  			// DB Brand Colors
+  			'coconut': '#f7f5f2',
+  			'coconut-dark': '#F5EDE0',
+  			'text-base': '#1a1918',
+  			'text-subtle': '#736c64',
+  			'accent-tangerine': '#ff8c19',
+  			'accent-yellow': '#D4AF37',
+  			'accent-yellow-light': '#E8C84A',
+  			'accent-line': 'rgba(97, 82, 90, 0.1)',
+  			// Default shadcn colors
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
