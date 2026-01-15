@@ -11,6 +11,13 @@ export const IMAGES = {
   couple: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/q1gnk12y_couple.jpg',
   crowd: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/qhnubmvy_crowd.jpg',
   crowd2: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/gxfc8476_crowd2.jpg',
+  // Showman performance photos
+  showman1: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/kvps7s4z_08-4-071-DSC_0659.JPG',
+  showman2: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/qycqiitr_05-IMG_0558.JPG',
+  showman3: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/at86iqyj_IMG_5972.JPG',
+  // Add-ons entertainment
+  sufiDancer: 'https://images.unsplash.com/photo-1566346289693-a555ded1b37d?w=800&q=80',
+  bellyDancer: 'https://images.unsplash.com/photo-1589363348179-3cced6b7b6d3?w=800&q=80',
 };
 
 export const NAV_LINKS = [
