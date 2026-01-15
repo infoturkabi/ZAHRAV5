@@ -150,12 +150,12 @@ export const GALLERY_DATA = {
   title: 'See the Fun in Action',
   description: 'Real moments from our events — laughter, joy, and unforgettable memories.',
   items: [
+    { title: 'The Showman', subtitle: 'Traditional Performance', image: 'turkishIceCream' },
     { title: 'Corporate Events', subtitle: 'Launches • Teams • VIP', image: 'crowd' },
     { title: 'Birthday Parties', subtitle: 'Kids • Families', image: 'child' },
     { title: 'Mall Activations', subtitle: 'Crowd • Promo', image: 'crowd2' },
     { title: 'Family Fun', subtitle: 'Kids • Smiles', image: 'child2' },
     { title: 'Happy Guests', subtitle: 'Joy • Laughter', image: 'couple' },
-    { title: 'Ice Cream Magic', subtitle: 'Performance • Entertainment', image: 'hero' },
   ],
 };
 
