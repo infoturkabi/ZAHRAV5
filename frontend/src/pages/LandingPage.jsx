@@ -25,29 +25,23 @@ import {
   CheckCircle,
   MessageCircle,
   Play,
+  Globe,
 } from 'lucide-react';
 import {
   IMAGES,
-  NAV_LINKS,
-  HERO_DATA,
-  EXPERIENCE_DATA,
   PACKAGES_DATA,
-  ADDONS_DATA,
-  HOW_IT_WORKS_DATA,
-  GALLERY_DATA,
   VIDEOS_DATA,
-  FAQ_DATA,
   TRUSTED_DATA,
-  REQUIREMENTS_DATA,
   CONTACT_DATA,
-  FOOTER_DATA,
 } from '../data/mock';
+import { useLanguage } from '../context/LanguageContext';
 
 const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   const getWhatsAppLink = () => {
-    const message = encodeURIComponent(CONTACT_DATA.whatsappTemplate);
+    const message = encodeURIComponent(t.contact.template);
     return `https://wa.me/6282113842595?text=${message}`;
   };
 
@@ -58,6 +52,18 @@ const LandingPage = () => {
     }
     setMobileMenuOpen(false);
   };
+
+  const navLinks = [
+    { id: 'experience', label: t.nav.experience },
+    { id: 'packages', label: t.nav.packages },
+    { id: 'how-it-works', label: t.nav.howItWorks },
+    { id: 'gallery', label: t.nav.gallery },
+    { id: 'videos', label: t.nav.videos },
+    { id: 'faq', label: t.nav.faq },
+    { id: 'contact', label: t.nav.contact },
+  ];
+
+  const galleryImages = ['turkishIceCream', 'crowd', 'child', 'crowd2', 'child2', 'couple'];
 
   const iconMap = {
     Sparkles: Sparkles,
