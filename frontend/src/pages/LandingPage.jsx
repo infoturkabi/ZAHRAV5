@@ -775,9 +775,13 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="bg-text-base text-white py-10">
         <div className="container mx-auto px-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-white/10 mb-6">
-            <a href="#home" className="font-display font-black text-2xl">
-              ZAHRA<span className="text-accent-tangerine">.</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10 mb-6">
+            <a href="#home" className="flex items-center">
+              <img 
+                src={IMAGES.logoFooter} 
+                alt="ZAHRA Turkish Ice Cream" 
+                className="h-20 w-auto object-contain"
+              />
             </a>
             <div className="flex flex-wrap gap-4 justify-center">
               {navLinks.slice(0, 4).map((link) => (
