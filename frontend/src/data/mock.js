@@ -6,6 +6,8 @@ export const IMAGES = {
   ownerSerdal: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/z8c7xlk9_zahra%20owner%20serdal.png',
   owner: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/ol1c2z8o_zahra%20owner.JPG',
   logo: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/87sn1l1e_ZAHRATurkishIceCreamlogo.jpg',
+  logoHeader: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/7mf5tse3_logo.jpg',
+  logoFooter: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/6jsljfc7_zahra%20logo3.jpg',
   child: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/1iqzvaxd_child.jpg',
   child2: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/79c5tver_child2.jpg',
   couple: 'https://customer-assets.emergentagent.com/job_zahra-turkish-ice/artifacts/q1gnk12y_couple.jpg',
