@@ -94,7 +94,7 @@ const LandingPage = () => {
 
             {/* Desktop Nav Links */}
             <ul className="hidden lg:flex items-center gap-6">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
@@ -106,8 +106,19 @@ const LandingPage = () => {
               ))}
             </ul>
 
-            {/* CTA and Mobile Menu */}
+            {/* Language Switch, CTA and Mobile Menu */}
             <div className="flex items-center gap-3">
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-text-base/5 hover:bg-text-base/10 transition-colors font-bold text-sm"
+              >
+                <Globe size={16} />
+                <span className={language === 'en' ? 'text-accent-tangerine' : 'text-text-base/60'}>EN</span>
+                <span className="text-text-base/30">|</span>
+                <span className={language === 'id' ? 'text-accent-tangerine' : 'text-text-base/60'}>ID</span>
+              </button>
+              
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
@@ -115,7 +126,7 @@ const LandingPage = () => {
                 className="hidden sm:inline-flex"
               >
                 <Button className="bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full px-5 py-2 text-sm shadow-lg shadow-accent-tangerine/25 transition-transform hover:scale-105">
-                  Book on WhatsApp
+                  {t.nav.bookWhatsApp}
                 </Button>
               </a>
               <button
@@ -130,7 +141,7 @@ const LandingPage = () => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="lg:hidden border-t border-accent-line py-4 animate-in slide-in-from-top-2">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
