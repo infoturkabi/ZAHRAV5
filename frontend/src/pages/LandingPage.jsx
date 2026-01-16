@@ -65,14 +65,7 @@ const LandingPage = () => {
 
   const galleryImages = ['turkishIceCream', 'crowd', 'child', 'crowd2', 'child2', 'couple'];
 
-  const iconMap = {
-    Sparkles: Sparkles,
-    IceCream: IceCreamCone,
-    Building2: Building2,
-    Users: Users,
-    CircleDot: CircleDot,
-    Music: Music,
-  };
+  const featureIcons = [Sparkles, IceCreamCone, Building2];
 
   return (
     <div className="min-h-screen bg-coconut">
@@ -141,6 +134,16 @@ const LandingPage = () => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="lg:hidden border-t border-accent-line py-4 animate-in slide-in-from-top-2">
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 w-full py-3 px-2 font-bold text-text-base"
+              >
+                <Globe size={18} />
+                <span className={language === 'en' ? 'text-accent-tangerine' : ''}>EN</span>
+                <span className="text-text-base/30">|</span>
+                <span className={language === 'id' ? 'text-accent-tangerine' : ''}>ID</span>
+              </button>
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -157,7 +160,7 @@ const LandingPage = () => {
                 className="block mt-3"
               >
                 <Button className="w-full bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full">
-                  Book on WhatsApp
+                  {t.nav.bookWhatsApp}
                 </Button>
               </a>
             </div>
@@ -175,33 +178,32 @@ const LandingPage = () => {
           backgroundPosition: 'center',
         }}
       >
-        {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         
         <div className="container mx-auto px-5 relative z-10 pt-20 pb-16">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm border border-accent-tangerine/20 px-4 py-2 rounded-full text-sm font-bold text-accent-tangerine shadow-lg mb-6">
               <IceCreamCone size={16} />
-              {HERO_DATA.badge}
+              {t.hero.badge}
             </span>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
-              {HERO_DATA.title}{' '}
+              {t.hero.title}{' '}
               <span className="relative inline-block">
-                <span className="text-accent-tangerine">{HERO_DATA.highlight}</span>
+                <span className="text-accent-tangerine">{t.hero.highlight}</span>
                 <span className="absolute left-0 right-0 bottom-2 h-3 bg-accent-yellow/50 -z-10 rounded" />
               </span>{' '}
-              {HERO_DATA.titleEnd}
+              {t.hero.titleEnd}
             </h1>
 
             <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
-              {HERO_DATA.description}
+              {t.hero.description}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
               <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full px-8 py-4 text-lg shadow-xl shadow-accent-tangerine/40 transition-transform hover:scale-105">
-                  {HERO_DATA.ctaPrimary}
+                  {t.hero.ctaPrimary}
                 </Button>
               </a>
               <Button
@@ -209,15 +211,15 @@ const LandingPage = () => {
                 onClick={() => scrollToSection('packages')}
                 className="rounded-full px-8 py-4 text-lg font-bold border-2 border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 transition-colors"
               >
-                {HERO_DATA.ctaSecondary}
+                {t.hero.ctaSecondary}
               </Button>
             </div>
 
             <div className="text-sm font-semibold text-white/80">
-              {HERO_DATA.trustBadges.map((badge, i) => (
+              {t.hero.trustBadges.map((badge, i) => (
                 <span key={i}>
                   {badge}
-                  {i < HERO_DATA.trustBadges.length - 1 && (
+                  {i < t.hero.trustBadges.length - 1 && (
                     <span className="mx-2 text-white/40">•</span>
                   )}
                 </span>
@@ -225,19 +227,23 @@ const LandingPage = () => {
             </div>
 
             <p className="mt-4 text-white/70 font-semibold text-sm">
-              {HERO_DATA.tagline}
+              {t.hero.tagline}
             </p>
 
             {/* Stats Bar */}
             <div className="mt-10 flex gap-8 md:gap-12">
-              {HERO_DATA.stats.map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="font-display font-black text-3xl md:text-4xl text-accent-tangerine">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm font-semibold text-white/70">{stat.label}</div>
-                </div>
-              ))}
+              <div className="text-center">
+                <div className="font-display font-black text-3xl md:text-4xl text-accent-tangerine">14+</div>
+                <div className="text-sm font-semibold text-white/70">{t.hero.stats.years}</div>
+              </div>
+              <div className="text-center">
+                <div className="font-display font-black text-3xl md:text-4xl text-accent-tangerine">5K+</div>
+                <div className="text-sm font-semibold text-white/70">{t.hero.stats.events}</div>
+              </div>
+              <div className="text-center">
+                <div className="font-display font-black text-3xl md:text-4xl text-accent-tangerine">WA</div>
+                <div className="text-sm font-semibold text-white/70">{t.hero.stats.response}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -248,17 +254,17 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {EXPERIENCE_DATA.tag}
+              {t.experience.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {EXPERIENCE_DATA.title}
+              {t.experience.title}
             </h2>
-            <p className="text-text-subtle text-lg">{EXPERIENCE_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.experience.description}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {EXPERIENCE_DATA.features.map((feature, i) => {
-              const IconComponent = iconMap[feature.icon];
+            {t.experience.features.map((feature, i) => {
+              const IconComponent = featureIcons[i];
               return (
                 <div
                   key={i}
@@ -278,7 +284,7 @@ const LandingPage = () => {
 
           {/* Meet the Founders */}
           <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="font-display font-bold text-2xl text-text-base text-center mb-8">Meet the Founders</h3>
+            <h3 className="font-display font-bold text-2xl text-text-base text-center mb-8">{t.experience.founders.title}</h3>
             <div className="bg-white rounded-2xl overflow-hidden border border-text-base/5 shadow-lg">
               <div className="grid md:grid-cols-2">
                 <div
@@ -291,15 +297,15 @@ const LandingPage = () => {
                 />
               </div>
               <div className="p-6 text-center">
-                <h4 className="font-display font-bold text-xl text-text-base">Bringing Turkish Ice Cream Magic to Jakarta</h4>
-                <p className="text-text-subtle font-medium mt-2">Since 2011, creating smiles and unforgettable memories</p>
+                <h4 className="font-display font-bold text-xl text-text-base">{t.experience.founders.subtitle}</h4>
+                <p className="text-text-subtle font-medium mt-2">{t.experience.founders.description}</p>
               </div>
             </div>
           </div>
 
-          {/* Our Showmen in Action - Running Carousel */}
+          {/* Our Showmen in Action */}
           <div className="mt-16">
-            <h3 className="font-display font-bold text-2xl text-text-base text-center mb-8">Our Showmen in Action</h3>
+            <h3 className="font-display font-bold text-2xl text-text-base text-center mb-8">{t.experience.showmen.title}</h3>
             <div className="relative overflow-hidden rounded-2xl">
               <div className="flex animate-scroll gap-4">
                 {[IMAGES.showman1, IMAGES.showman2, IMAGES.showman3, IMAGES.showman1, IMAGES.showman2, IMAGES.showman3].map((img, i) => (
@@ -316,7 +322,7 @@ const LandingPage = () => {
                 ))}
               </div>
             </div>
-            <p className="text-center text-text-subtle font-medium mt-4">Professional Turkish ice cream performers & entertainers</p>
+            <p className="text-center text-text-subtle font-medium mt-4">{t.experience.showmen.description}</p>
           </div>
         </div>
       </section>
@@ -326,12 +332,12 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {PACKAGES_DATA.tag}
+              {t.packages.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {PACKAGES_DATA.title}
+              {t.packages.title}
             </h2>
-            <p className="text-text-subtle text-lg">{PACKAGES_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.packages.description}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
@@ -344,20 +350,20 @@ const LandingPage = () => {
                     : 'border-text-base/5 shadow-text-base/5'
                 }`}
               >
-                {pkg.badge && (
+                {pkg.featured && (
                   <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-accent-yellow to-accent-yellow-light font-bold text-xs uppercase tracking-wide mb-3">
-                    {pkg.badge}
+                    {t.packages.mostPopular}
                   </span>
                 )}
-                <h3 className="font-display font-bold text-xl text-text-base">{pkg.name}</h3>
+                <h3 className="font-display font-bold text-xl text-text-base">{t.packages.items[i].name}</h3>
                 <div className="font-display font-black text-3xl text-accent-tangerine mt-2">
                   {pkg.price}
                   <span className="text-base font-semibold text-text-subtle ml-1">
-                    {pkg.perEvent}
+                    {t.packages.perEvent}
                   </span>
                 </div>
                 <div className="mt-5 space-y-3">
-                  {pkg.features.map((feature, j) => (
+                  {t.packages.items[i].features.map((feature, j) => (
                     <div key={j} className="flex items-start gap-3">
                       <Check size={18} className="text-accent-yellow mt-0.5 flex-shrink-0" />
                       <span className="text-text-subtle font-medium">{feature}</span>
@@ -373,7 +379,7 @@ const LandingPage = () => {
                           : 'bg-text-base hover:bg-text-base/90 text-white'
                       }`}
                     >
-                      Request Quote
+                      {t.packages.requestQuote}
                     </Button>
                   </a>
                 </div>
@@ -382,7 +388,7 @@ const LandingPage = () => {
           </div>
 
           <div className="mt-8 p-5 rounded-2xl bg-white/70 border-l-4 border-accent-yellow text-text-subtle font-medium">
-            {PACKAGES_DATA.note}
+            {t.packages.note}
           </div>
         </div>
       </section>
@@ -392,30 +398,30 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {ADDONS_DATA.tag}
+              {t.addons.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {ADDONS_DATA.title}
+              {t.addons.title}
             </h2>
-            <p className="text-text-subtle text-lg">{ADDONS_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.addons.description}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {ADDONS_DATA.addons.map((addon, i) => (
+            {['turkishIceCream', 'sufiDancer', 'bellyDancer'].map((imgKey, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl overflow-hidden border border-text-base/5 shadow-lg hover:shadow-xl transition-shadow group"
               >
                 <div
                   className="h-52 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${IMAGES[addon.image]})` }}
+                  style={{ backgroundImage: `url(${IMAGES[imgKey]})` }}
                 />
                 <div className="p-5">
-                  <h3 className="font-display font-bold text-xl text-text-base">{addon.title}</h3>
+                  <h3 className="font-display font-bold text-xl text-text-base">{t.addons.items[i].title}</h3>
                   <p className="text-text-subtle mt-2">
-                    <strong className="text-accent-tangerine text-lg">{addon.price}</strong>
+                    <strong className="text-accent-tangerine text-lg">{t.addons.items[i].price}</strong>
                   </p>
-                  <p className="text-text-subtle font-medium mt-1">{addon.description}</p>
+                  <p className="text-text-subtle font-medium mt-1">{t.addons.items[i].description}</p>
                 </div>
               </div>
             ))}
@@ -428,19 +434,19 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-yellow/20 text-accent-yellow font-bold text-sm mb-4">
-              {HOW_IT_WORKS_DATA.tag}
+              {t.howItWorks.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black mb-4">
-              {HOW_IT_WORKS_DATA.title}
+              {t.howItWorks.title}
             </h2>
-            <p className="text-white/75 text-lg">{HOW_IT_WORKS_DATA.description}</p>
+            <p className="text-white/75 text-lg">{t.howItWorks.description}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {HOW_IT_WORKS_DATA.steps.map((step) => (
-              <div key={step.number} className="text-center">
+            {t.howItWorks.steps.map((step, i) => (
+              <div key={i} className="text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent-tangerine to-accent-tangerine/80 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-accent-tangerine/40">
-                  <span className="font-display font-black text-xl">{step.number}</span>
+                  <span className="font-display font-black text-xl">{i + 1}</span>
                 </div>
                 <h3 className="font-bold text-base mb-2">{step.title}</h3>
                 <p className="text-white/70 text-sm font-medium">{step.description}</p>
@@ -455,27 +461,27 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {GALLERY_DATA.tag}
+              {t.gallery.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {GALLERY_DATA.title}
+              {t.gallery.title}
             </h2>
-            <p className="text-text-subtle text-lg">{GALLERY_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.gallery.description}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {GALLERY_DATA.items.map((item, i) => (
+            {galleryImages.map((imgKey, i) => (
               <figure
                 key={i}
                 className="rounded-2xl overflow-hidden border border-text-base/5 bg-white shadow-lg shadow-text-base/5 group"
               >
                 <div
                   className="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${IMAGES[item.image]})` }}
+                  style={{ backgroundImage: `url(${IMAGES[imgKey]})` }}
                 />
                 <figcaption className="p-4">
-                  <div className="font-bold text-text-base">{item.title}</div>
-                  <div className="text-sm text-text-subtle font-medium">{item.subtitle}</div>
+                  <div className="font-bold text-text-base">{t.gallery.items[i].title}</div>
+                  <div className="text-sm text-text-subtle font-medium">{t.gallery.items[i].subtitle}</div>
                 </figcaption>
               </figure>
             ))}
@@ -488,12 +494,12 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {VIDEOS_DATA.tag}
+              {t.videos.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {VIDEOS_DATA.title}
+              {t.videos.title}
             </h2>
-            <p className="text-text-subtle text-lg">{VIDEOS_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.videos.description}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -530,7 +536,7 @@ const LandingPage = () => {
                 className="rounded-full px-6 py-3 font-bold border-2 border-accent-tangerine/30 hover:border-accent-tangerine hover:bg-accent-tangerine/5 transition-colors"
               >
                 <Play size={18} className="mr-2" />
-                Watch More on YouTube
+                {t.videos.watchMore}
               </Button>
             </a>
           </div>
@@ -538,16 +544,16 @@ const LandingPage = () => {
       </section>
 
       {/* Trusted Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-coconut to-coconut-dark">
+      <section className="py-20 lg:py-28">
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {TRUSTED_DATA.tag}
+              {t.trusted.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {TRUSTED_DATA.title}
+              {t.trusted.title}
             </h2>
-            <p className="text-text-subtle text-lg">{TRUSTED_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.trusted.description}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
@@ -556,7 +562,7 @@ const LandingPage = () => {
                 <Trophy size={28} className="text-accent-tangerine" />
               </div>
               <h3 className="font-display font-bold text-xl text-text-base mb-4">
-                Corporate Clients
+                {t.trusted.corporate}
               </h3>
               <ul className="space-y-2">
                 {TRUSTED_DATA.corporateClients.map((client, i) => (
@@ -573,7 +579,7 @@ const LandingPage = () => {
                 <Handshake size={28} className="text-accent-tangerine" />
               </div>
               <h3 className="font-display font-bold text-xl text-text-base mb-4">
-                Event Organizer Partners
+                {t.trusted.partners}
               </h3>
               <ul className="space-y-2">
                 {TRUSTED_DATA.eventPartners.map((partner, i) => (
@@ -589,10 +595,9 @@ const LandingPage = () => {
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-tangerine/10 to-accent-yellow/15 border border-text-base/5 flex items-center justify-center mb-4">
                 <CheckCircle size={28} className="text-accent-tangerine" />
               </div>
-              <h3 className="font-display font-bold text-xl text-text-base mb-4">What you get</h3>
+              <h3 className="font-display font-bold text-xl text-text-base mb-4">{t.trusted.whatYouGet}</h3>
               <p className="text-text-subtle leading-relaxed">
-                Professional showman, premium Turkish ice cream, smooth coordination, and a fun guest
-                experience.
+                {t.trusted.whatYouGetDesc}
               </p>
             </div>
           </div>
@@ -600,21 +605,21 @@ const LandingPage = () => {
       </section>
 
       {/* Requirements Section */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-coconut to-coconut-dark">
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {REQUIREMENTS_DATA.tag}
+              {t.requirements.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {REQUIREMENTS_DATA.title}
+              {t.requirements.title}
             </h2>
-            <p className="text-text-subtle text-lg">{REQUIREMENTS_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.requirements.description}</p>
           </div>
 
           <div className="max-w-2xl mx-auto bg-white rounded-2xl p-6 border border-text-base/5 shadow-lg">
             <div className="space-y-3">
-              {REQUIREMENTS_DATA.items.map((item, i) => (
+              {t.requirements.items.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Check size={18} className="text-accent-yellow mt-0.5 flex-shrink-0" />
                   <span className="text-text-subtle font-medium">{item}</span>
@@ -626,21 +631,21 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 lg:py-28 bg-gradient-to-b from-coconut to-coconut-dark">
+      <section id="faq" className="py-20 lg:py-28">
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-accent-tangerine/10 text-accent-tangerine font-bold text-sm mb-4">
-              {FAQ_DATA.tag}
+              {t.faq.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black text-text-base mb-4">
-              {FAQ_DATA.title}
+              {t.faq.title}
             </h2>
-            <p className="text-text-subtle text-lg">{FAQ_DATA.description}</p>
+            <p className="text-text-subtle text-lg">{t.faq.description}</p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-3">
-              {FAQ_DATA.questions.map((faq, i) => (
+              {t.faq.questions.map((faq, i) => (
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
@@ -664,29 +669,28 @@ const LandingPage = () => {
         <div className="container mx-auto px-5">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-white/20 font-bold text-sm mb-4">
-              {CONTACT_DATA.tag}
+              {t.contact.tag}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-black mb-4">
-              {CONTACT_DATA.title}
+              {t.contact.title}
             </h2>
-            <p className="text-white/85 text-lg">{CONTACT_DATA.description}</p>
+            <p className="text-white/85 text-lg">{t.contact.description}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {/* WhatsApp Template Panel */}
             <div className="bg-white/95 text-text-base rounded-2xl p-6 border border-text-base/10 shadow-2xl">
-              <h3 className="font-display font-bold text-xl mb-4">Book on WhatsApp (Template)</h3>
+              <h3 className="font-display font-bold text-xl mb-4">{t.contact.templateTitle}</h3>
               <div className="bg-coconut rounded-xl p-4 border border-text-base/5 text-text-subtle font-medium whitespace-pre-line leading-relaxed mb-5">
-                {CONTACT_DATA.whatsappTemplate}
+                {t.contact.template}
               </div>
               <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full py-3 shadow-lg shadow-accent-tangerine/30 transition-transform hover:scale-105">
-                  Open WhatsApp with Template
+                  {t.contact.openWhatsApp}
                 </Button>
               </a>
               <p className="mt-4 text-sm text-text-subtle font-medium">
-                Tip: Copy the template text and paste in WhatsApp if your device blocks prefilled
-                messages.
+                {t.contact.tip}
               </p>
             </div>
 
@@ -697,7 +701,7 @@ const LandingPage = () => {
                   <Phone size={22} />
                 </div>
                 <div>
-                  <div className="font-bold mb-1">WhatsApp</div>
+                  <div className="font-bold mb-1">{t.contact.whatsapp}</div>
                   {CONTACT_DATA.whatsappNumbers.map((num, i) => (
                     <div key={i}>
                       <a
@@ -718,7 +722,7 @@ const LandingPage = () => {
                   <Mail size={22} />
                 </div>
                 <div>
-                  <div className="font-bold mb-1">Email</div>
+                  <div className="font-bold mb-1">{t.contact.email}</div>
                   <a href={`mailto:${CONTACT_DATA.email}`} className="font-bold hover:underline">
                     {CONTACT_DATA.email}
                   </a>
@@ -730,7 +734,7 @@ const LandingPage = () => {
                   <Instagram size={22} />
                 </div>
                 <div>
-                  <div className="font-bold mb-1">Instagram</div>
+                  <div className="font-bold mb-1">{t.contact.instagram}</div>
                   <a
                     href={CONTACT_DATA.instagramLink}
                     target="_blank"
@@ -747,7 +751,7 @@ const LandingPage = () => {
                   <MapPin size={22} />
                 </div>
                 <div>
-                  <div className="font-bold mb-1">Office</div>
+                  <div className="font-bold mb-1">{t.contact.office}</div>
                   <div className="font-semibold opacity-90">
                     {CONTACT_DATA.office.name}
                     <br />
@@ -772,7 +776,7 @@ const LandingPage = () => {
               ZAHRA<span className="text-accent-tangerine">.</span>
             </a>
             <div className="flex flex-wrap gap-4 justify-center">
-              {NAV_LINKS.slice(0, 4).map((link) => (
+              {navLinks.slice(0, 4).map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
@@ -784,8 +788,8 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="text-center">
-            <div className="text-white/60 font-medium">{FOOTER_DATA.copyright}</div>
-            <div className="text-accent-yellow font-semibold mt-2">{FOOTER_DATA.tagline}</div>
+            <div className="text-white/60 font-medium">{t.footer.copyright}</div>
+            <div className="text-accent-yellow font-semibold mt-2">{t.footer.tagline}</div>
           </div>
         </div>
       </footer>
