@@ -290,29 +290,29 @@ const LandingPage = () => {
           <div className="mt-16 max-w-5xl mx-auto">
             <h3 className="font-display font-bold text-2xl text-text-base text-center mb-8">{t.experience.founders.title}</h3>
             <div className="bg-white rounded-2xl overflow-hidden border border-text-base/5 shadow-lg">
-              <div className="grid md:grid-cols-3 items-center">
+              <div className="grid grid-cols-3 items-center">
                 {/* First Founder */}
                 <div
-                  className="h-72 md:h-96 bg-cover bg-center"
+                  className="h-64 md:h-80 bg-cover bg-center"
                   style={{ backgroundImage: `url(${IMAGES.owner})` }}
                 />
                 {/* Logo in the middle */}
-                <div className="h-72 md:h-96 flex items-center justify-center bg-gradient-to-b from-coconut to-white p-6">
+                <div className="h-64 md:h-80 flex items-center justify-center bg-gradient-to-b from-coconut to-white p-3 md:p-6">
                   <img 
                     src={IMAGES.logoFooter} 
                     alt="ZAHRA Turkish Ice Cream" 
-                    className="w-full max-w-[280px] h-auto object-contain drop-shadow-xl"
+                    className="w-full max-w-[160px] md:max-w-[220px] h-auto object-contain drop-shadow-xl"
                   />
                 </div>
                 {/* Second Founder */}
                 <div
-                  className="h-72 md:h-96 bg-cover bg-center"
+                  className="h-64 md:h-80 bg-cover bg-center"
                   style={{ backgroundImage: `url(${IMAGES.ownerSerdal})` }}
                 />
               </div>
-              <div className="p-6 text-center">
-                <h4 className="font-display font-bold text-xl text-text-base">{t.experience.founders.subtitle}</h4>
-                <p className="text-text-subtle font-medium mt-2">{t.experience.founders.description}</p>
+              <div className="p-4 md:p-6 text-center">
+                <h4 className="font-display font-bold text-lg md:text-xl text-text-base">{t.experience.founders.subtitle}</h4>
+                <p className="text-text-subtle font-medium mt-2 text-sm md:text-base">{t.experience.founders.description}</p>
               </div>
             </div>
           </div>
