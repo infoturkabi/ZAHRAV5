@@ -72,7 +72,7 @@ const LandingPage = () => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-coconut/95 backdrop-blur-md border-b border-accent-line">
         <div className="container mx-auto px-5">
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             {/* Logo */}
             <a
               href="#home"
@@ -80,9 +80,13 @@ const LandingPage = () => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="font-display font-black text-2xl text-text-base tracking-tight"
+              className="flex items-center"
             >
-              ZAHRA<span className="text-accent-tangerine">.</span>
+              <img 
+                src={IMAGES.logoHeader} 
+                alt="ZAHRA Turkish Ice Cream" 
+                className="h-12 w-auto object-contain"
+              />
             </a>
 
             {/* Desktop Nav Links */}
