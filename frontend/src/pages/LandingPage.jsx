@@ -184,18 +184,6 @@ const LandingPage = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         
-        {/* Floating Logo on Right Side - Desktop Only */}
-        <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-10">
-          <div className="relative">
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-3xl transform rotate-3"></div>
-            <img 
-              src={IMAGES.logoFooter} 
-              alt="ZAHRA Turkish Ice Cream" 
-              className="relative w-72 h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        </div>
-        
         <div className="container mx-auto px-5 relative z-10 pt-20 pb-16">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm border border-accent-tangerine/20 px-4 py-2 rounded-full text-sm font-bold text-accent-tangerine shadow-lg mb-6">
