@@ -785,26 +785,33 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-text-base text-white py-10">
+      <footer className="bg-text-base text-white py-12">
         <div className="container mx-auto px-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10 mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-white/10 mb-8">
             <a href="#home" className="flex items-center">
               <img 
                 src={IMAGES.logoFooter} 
                 alt="ZAHRA Turkish Ice Cream" 
-                className="h-20 w-auto object-contain"
+                className="h-32 md:h-40 w-auto object-contain"
               />
             </a>
-            <div className="flex flex-wrap gap-4 justify-center">
-              {navLinks.slice(0, 4).map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-white/70 hover:text-white font-semibold text-sm transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
+            <div className="flex flex-col items-center md:items-end gap-4">
+              <div className="flex flex-wrap gap-4 justify-center">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollToSection(link.id)}
+                    className="text-white/70 hover:text-white font-semibold text-sm transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-accent-tangerine hover:bg-accent-tangerine/90 text-white font-bold rounded-full px-6 py-2 text-sm">
+                  {t.nav.bookWhatsApp}
+                </Button>
+              </a>
             </div>
           </div>
           <div className="text-center">
